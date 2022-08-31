@@ -56,4 +56,5 @@ struct Data//32 Bytes each day
   - Logo
 - Python Version
 - Online data processing
-
+- Other offline files, such as 5mins, month etc, and stat (from day to month)
+- Add Lisence
