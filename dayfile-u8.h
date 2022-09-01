@@ -24,6 +24,10 @@ struct Data//一共32字节
     friend ostream& operator<<(ostream&, Data&);
 };
 
+void binary2csv(string, string);
+
+//---implement---
+
 ofstream& operator<<(ofstream& out, Data& r_data)
 {
     out<<r_data.date<<','<<r_data.open/100.0<<','<<r_data.high/100.0<<','<<r_data.low/100.0<<','<<
