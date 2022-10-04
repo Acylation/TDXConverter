@@ -1,2 +1,5 @@
 #local settings
 /.vscode
+
+#test files
+/testscripts
