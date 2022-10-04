@@ -33,46 +33,46 @@ struct Data//32 Bytes each day
 
 ## Todo List
 
-- [ ] Convert core √
-  - [ ] Read Binary .day file √  
-  - [ ] Struct Data √  
-  - [ ] Export as .csv  √  
-  - Command Line Version (v0.1.0) √
-  - Encoding Conflict √  
+- [x] Convert core 
+  - [x] Read Binary .day file 
+  - [x] Struct Data 
+  - [x] Export as .csv 
+  - [x] Command Line Version (v0.1.0)
+  - [x] Encoding Conflict 
   Default: ANSI for excel, Utf-8 for VSCode  
   Temporary solution：main.cpp-u8，dayfile.h-GB2312
-  - Batch processing by command line
-- Simple UI with Qt  
-  - UI, select file/folders and run
-  - UI, drag to import
-  - Encapsulation improve
-  - Encoding Conflict (convert functions based on std::ctype)
-  - Import/Export module based on QFileDialog
-  - Conversion core  
-  - Batch-Singular by Qt
-  - QSettings (setting:bool recursion)
-  - Seperated functions & header by Makefile
-- Tabs & Pages
-  - Main console
-    - Folder Selector
-    - Run buttons
-    - File table
-    - Tasks table / Dynamic / Progress Bar
-  - Candlestick preview
-    - candlestick graph
-    - prettier
-    - float mouse event
-    - b/s mark & virtual account management
-    - basic indexes
-  - Datatable preview
-- Prettier
-  - QSS/QtStyleSheet
-  - Logo
-- Python Version
-  - Core
-  - Batch support
-  - UI
-  - Matplotlib
-- Online data processing / Crawling
-- Other offline files, such as 5mins, month etc, and stat (from day to month)
-- Add Lisence  
+  - [ ] Batch processing by command line
+- [ ] Simple UI with Qt  
+  - [ ] UI, select file/folders and run
+  - [ ] UI, drag to import
+  - [ ] Encapsulation improve
+  - [ ] Encoding Conflict (convert functions based on std::ctype)
+  - [ ] Import/Export module based on QFileDialog
+  - [ ] Conversion core  
+  - [ ] Batch-Singular by Qt
+  - [ ] QSettings (setting:bool recursion)
+  - [ ] Seperated functions & header by Makefile
+- [ ] Tabs & Pages
+  - [ ] Main console
+    - [ ] Folder Selector
+    - [ ] Run buttons
+    - [ ] File table
+    - [ ] Tasks table / Dynamic / Progress Bar
+  - [ ] Candlestick preview
+    - [ ] candlestick graph
+    - [ ] prettier
+    - [ ] float mouse event
+    - [ ] b/s mark & virtual account management
+    - [ ] basic indexes
+  - [ ] Datatable preview
+- [ ] Prettier
+  - [ ] QSS/QtStyleSheet
+  - [ ] Logo
+- [ ] Python Version
+  - [ ] Core
+  - [ ] Batch support
+  - [ ] UI
+  - [ ] Matplotlib
+- [ ] Online data processing / Crawling
+- [ ] Other offline files, such as 5mins, month etc, and stat (from day to month)
+- [ ] Add Lisence  
