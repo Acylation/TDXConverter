@@ -3,7 +3,7 @@
 Convert TongDaXin dayline file (\*.day) to csv format, with basic UI  
 Written by Qt & C++  
 
-## *.day File & TDX Format
+## TDX Format (*.day Files)
 
 .day files are stored under the TDX folder \vipdoc  
 each .day file is named after market+code  
