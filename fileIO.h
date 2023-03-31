@@ -2,8 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <Windows.h>
 #include <io.h> 
-#include <algorithm>
+
 using namespace std;
 
 /*
@@ -99,7 +100,7 @@ fileList::fileList(string inputString) //构造时初始化
 }
 
 //Criterions,验证输入用
-bool existItem(string itemPath)
+bool existItem(string itemPath)//暂时只支持英文
 {
     _finddata_t item;
     intptr_t HANDLE = _findfirst(itemPath.c_str(), &item);
@@ -111,54 +112,56 @@ bool existItem(string itemPath)
     else
     {
         _findclose(HANDLE);
-        cout<<"未找到文件/文件夹"<<endl;
         return false;
     }
 }
 
 bool isFile(string itemPath)
 {
-    if(existItem(itemPath))
+    _finddata_t item;
+    intptr_t HANDLE;
+    HANDLE = _findfirst((itemPath + "\\*.*").c_str(), &item);
+    if (HANDLE == -1L)//只有文件会返回空Handle
     {
-        _finddata_t item;
-        intptr_t HANDLE;
-        HANDLE = _findfirst((itemPath + "\\*.*").c_str(), &item);
-        if (HANDLE == -1L)
-        {
-            _findclose(HANDLE);
-            return true;
-        }
-        else
-        {
-            _findclose(HANDLE);
-            return false;
-        }
+        _findclose(HANDLE);
+        return true;
     }
-    else
+    else//文件夹至少能找到./和../
+    {
+        _findclose(HANDLE);
         return false;
+    }
 }
 
 bool isFolder(string itemPath)
 {
-    if(existItem(itemPath))
+    _finddata_t item;
+    intptr_t HANDLE;
+    HANDLE = _findfirst((itemPath + ".\\").c_str(), &item);
+    if (HANDLE != -1L)
     {
-        _finddata_t item;
-        intptr_t HANDLE;
-        HANDLE = _findfirst(itemPath.c_str(), &item);
-        if (item.attrib & _A_SUBDIR)
-        {
-            _findclose(HANDLE);
-            return true;
-        }
-
-        else
-        {
-            _findclose(HANDLE);
-            return false;
-        }
+        _findclose(HANDLE);
+        return false;
     }
     else
+    {
+        _findclose(HANDLE);
+        return true;
+    }
+
+    /*
+    HANDLE = _findfirst(itemPath.c_str(), &item);
+    if (item.attrib & _A_SUBDIR)
+    {
+        _findclose(HANDLE);
+        return true;
+    }
+    else
+    {
+        _findclose(HANDLE);
         return false;
+    }
+    */
 }
 
 //Criterion,查找中使用
@@ -231,6 +234,28 @@ void fileList::getFilePath(string folderPath)//Reference: https://blog.csdn.net/
     _findclose(HANDLE);
 }
 
+void printAll(string folderPath)
+{
+    vector<string> list;
+    _finddata_t item;
+    intptr_t HANDLE;
+    string specifiedDir = folderPath + "\\*.*";
+    HANDLE = _findfirst(specifiedDir.c_str(), &item);
+    do
+    {
+        list.push_back(folderPath + "\\" + item.name);//m_fileInfoList.push_back();
+    } while (_findnext(HANDLE, &item) == 0);
+    _findclose(HANDLE);
+    for(int i=0; i<list.size(); i++)
+    {
+        cout<<list.at(i)<<endl;
+    }
+}
+
+void getDrives()
+{
+
+}
 
 /*
 vector<string> fileList::exportList()
@@ -238,9 +263,6 @@ vector<string> fileList::exportList()
     getFilePath(m_srcDir);
     return m_pathList;
 }
-
-
-
 
 string splitPath(string srcPath,string path, int flag)//复用性不好，修
 {

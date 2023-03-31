@@ -33,12 +33,12 @@ struct Data//32 Bytes each day
 
 ## Todo List
 
-- [x] Convert core 
-  - [x] Read Binary .day file 
-  - [x] Struct Data 
-  - [x] Export as .csv 
+- [x] Convert core
+  - [x] Read Binary .day file
+  - [x] Struct Data
+  - [x] Export as .csv
   - [x] Command Line Version (v0.1.0)
-  - [x] Encoding Conflict 
+  - [x] Encoding Conflict
   Default: ANSI for excel, Utf-8 for VSCode  
   Temporary solution：main.cpp-u8，dayfile.h-GB2312
   - [ ] Batch processing by command line

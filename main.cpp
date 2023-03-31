@@ -4,10 +4,37 @@
 int main()
 {
     //input
-    string srcPath, dstPath;
-    bool flag;
+    string srcPath;
     cout<<"请输入文件/文件夹路径:";
     cin>>srcPath;
+    while (!existItem(srcPath))//暂时不支持中文名称
+    {
+        cout<<"文件/文件夹不存在,请重新输入:"<<endl;
+        cin>>srcPath;
+    }
+
+    string dstPath;
+    cout<<"请输入保存路径:";
+    cin>>dstPath;
+    while (!isFolder(dstPath))//暂时不支持中文名称
+    {
+        cout<<"文件夹不存在,请重新输入:"<<endl;
+        cin>>dstPath;
+    }
+
+    bool flag;
+    cout<<"是否递归查找? 1:是 0:否";//加入文件判断逻辑跳过这里？
+    cin>>flag;
+
+    printAll("G:\\");
+    return 0;
+}
+
+
+/*
+int main()
+{
+    //input
     if(isFile(srcPath))
     {
         string dir = splitPath(srcPath, 1);
@@ -52,3 +79,4 @@ int main()
 
     return 0;
 }
+*/
